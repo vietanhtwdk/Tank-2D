@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Font/ARCADE.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://SS/ResultScreen.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 1 )
+
+[node name="ResultScreen" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0.246094, 0.246094, 0.246094, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 320.0
+margin_top = 200.0
+margin_right = 960.0
+margin_bottom = 304.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 512.0
+margin_top = 336.0
+margin_right = 768.0
+margin_bottom = 400.0
+text = "Play Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 512.0
+margin_top = 448.0
+margin_right = 768.0
+margin_bottom = 512.0
+text = "Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

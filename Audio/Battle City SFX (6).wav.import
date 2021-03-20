@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Battle City SFX (6).wav-635c58bcb8528491ebd5adc7b57109bd.sample"
+
+[deps]
+
+source_file="res://Audio/Battle City SFX (6).wav"
+dest_files=[ "res://.import/Battle City SFX (6).wav-635c58bcb8528491ebd5adc7b57109bd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

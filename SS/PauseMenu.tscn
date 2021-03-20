@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SS/PauseMenu.gd" type="Script" id=1]
+
+[node name="PauseMenu" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseBackground" type="ColorRect" parent="."]
+margin_left = 320.0
+margin_top = 160.0
+margin_right = 960.0
+margin_bottom = 536.0
+color = Color( 0.882353, 0.882353, 0.882353, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReferenceRect" type="ReferenceRect" parent="PauseBackground"]
+margin_right = 640.0
+margin_bottom = 376.0
+editor_only = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResumeButton" type="Button" parent="."]
+margin_left = 576.0
+margin_top = 256.0
+margin_right = 704.0
+margin_bottom = 320.0
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenuButton" type="Button" parent="."]
+margin_left = 576.0
+margin_top = 384.0
+margin_right = 704.0
+margin_bottom = 448.0
+text = "Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
