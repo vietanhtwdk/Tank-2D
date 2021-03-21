@@ -21,7 +21,6 @@ func _physics_process(delta):
 	if collision:
 		if collision.collider is TileMap:
 			var tile = collision.collider.world_to_map(collision.position + velocity.normalized())
-			print(collision.collider.world_to_map(collision.position)+ velocity.normalized())
 			if collision.collider.get_cellv(tile) == 0:
 				collision.collider.set_cell(tile.x, tile.y, -1)
 			elif collision.collider.get_cellv(tile) == -1:

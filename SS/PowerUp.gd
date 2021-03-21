@@ -10,7 +10,8 @@ var MainGame
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimatedSprite.set_frame(type)
+#	$AnimatedSprite.set_frame(type)
+	$AnimatedSprite.play(str(type))
 	MainGame = get_node("/root/Main")
 
 

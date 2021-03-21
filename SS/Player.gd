@@ -70,7 +70,7 @@ func _physics_process(delta):
 	for child in $Ray.get_children():
 		var collider = child.get_collider()
 		if collider!= null:
-			if collider.is_in_group("Enemies"):
+			if collider.is_in_group("Enemies") && collider.froze==0:
 				collider.shoot()
 
 func shoot():
