@@ -23,16 +23,16 @@ tracks/0/keys = {
 "values": [ Color( 0.247059, 0.247059, 0.247059, 1 ), Color( 0.262745, 0.262745, 0.262745, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ColorRect/Label:visible")
+tracks/1/path = NodePath("ColorRect/Label:custom_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.5 ),
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="LevelTransition" type="CanvasLayer"]
@@ -41,7 +41,7 @@ script = ExtResource( 2 )
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1280.0
 margin_bottom = 720.0
-color = Color( 0.247059, 0.247059, 0.247059, 1 )
+color = Color( 0.262745, 0.262745, 0.262745, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -52,8 +52,9 @@ margin_top = 208.0
 margin_right = 1088.0
 margin_bottom = 515.0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 0 )
 text = "
-"
+dfgdfgdf"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,3 +62,4 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/New Anim" = SubResource( 2 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

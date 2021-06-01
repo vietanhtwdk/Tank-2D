@@ -43,6 +43,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Result" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="Label" type="Label" parent="Result"]
 visible = false

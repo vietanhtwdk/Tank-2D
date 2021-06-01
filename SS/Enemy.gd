@@ -67,6 +67,7 @@ func _process(delta):
 		var collision = move_and_collide(velocity*delta)
 		if collision:
 			move = 0
+		
 
 
 func shoot():
@@ -96,3 +97,24 @@ func hit(damageTaken):
 		if MainGame.enemyLeft == 0:
 			MainGame.level_clear()
 		queue_free()
+		
+func react(rayVector):
+	
+	var toPlayer = (rayVector*-1)
+	
+	if toPlayer.x > 0:
+		$AnimatedSprite.animation = "Default"
+		rotation_degrees = 90
+	elif toPlayer.x < 0:
+		$AnimatedSprite.animation = "Default"
+		rotation_degrees = -90
+	elif toPlayer.y > 0:
+		$AnimatedSprite.animation = "Default"
+		rotation_degrees = 180
+	elif toPlayer.y < 0:
+		$AnimatedSprite.animation = "Default"
+		rotation_degrees = 0
+	
+	shoot()
+	
+	

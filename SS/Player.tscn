@@ -1,39 +1,45 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Sprite/greenTank.png" type="Texture" id=1]
 [ext_resource path="res://SS/Player.gd" type="Script" id=2]
 [ext_resource path="res://Sprite/shield.png" type="Texture" id=3]
+[ext_resource path="res://Sprite/greenTank2.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 288, 287 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 288, 0, 288, 287 )
+
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 1 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "Default",
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 29.5634
 height = 0.0
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 371, 0, 371, 371 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 3 )
+region = Rect2( 371, 0, 371, 371 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 371, 371 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -46,14 +52,15 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.279589, 0.21766 )
-frames = SubResource( 2 )
+frames = SubResource( 3 )
 animation = "Default"
+frame = 1
 
 [node name="Muzzle" type="Position2D" parent="AnimatedSprite"]
 position = Vector2( 0, -128.371 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -65,46 +72,22 @@ one_shot = true
 [node name="Shield" type="AnimatedSprite" parent="."]
 visible = false
 scale = Vector2( 0.28, 0.27 )
-frames = SubResource( 6 )
+frames = SubResource( 7 )
 
 [node name="Ray" type="Node2D" parent="."]
 
-[node name="D2" type="RayCast2D" parent="Ray"]
-position = Vector2( 15, 15 )
+[node name="D" type="RayCast2D" parent="Ray"]
 enabled = true
 cast_to = Vector2( 0, 600 )
 
-[node name="D1" type="RayCast2D" parent="Ray"]
-position = Vector2( -15, 15 )
-enabled = true
-cast_to = Vector2( 0, 600 )
-
-[node name="L1" type="RayCast2D" parent="Ray"]
-position = Vector2( -15, 15 )
+[node name="L" type="RayCast2D" parent="Ray"]
 enabled = true
 cast_to = Vector2( -600, 0 )
 
-[node name="L2" type="RayCast2D" parent="Ray"]
-position = Vector2( -15, -15 )
-enabled = true
-cast_to = Vector2( -600, 0 )
-
-[node name="U1" type="RayCast2D" parent="Ray"]
-position = Vector2( -15, -15 )
+[node name="U" type="RayCast2D" parent="Ray"]
 enabled = true
 cast_to = Vector2( 0, -600 )
 
-[node name="U2" type="RayCast2D" parent="Ray"]
-position = Vector2( 15, -15 )
-enabled = true
-cast_to = Vector2( 0, -600 )
-
-[node name="R1" type="RayCast2D" parent="Ray"]
-position = Vector2( 15, 15 )
-enabled = true
-cast_to = Vector2( 600, 0 )
-
-[node name="R2" type="RayCast2D" parent="Ray"]
-position = Vector2( 15, -15 )
+[node name="R" type="RayCast2D" parent="Ray"]
 enabled = true
 cast_to = Vector2( 600, 0 )

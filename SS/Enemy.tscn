@@ -10,6 +10,16 @@ region = Rect2( 0, 574, 288, 287 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "Enemy3",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Enemy2",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "Default",

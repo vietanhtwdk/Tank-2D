@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Font/ARCADE.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://SS/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://admob-lib/admob.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 150
@@ -47,5 +48,9 @@ text = "TANK 2D"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AdMob" type="Node" parent="."]
+script = ExtResource( 3 )
+banner_id = "ca-app-pub-3940256099942544/6300978111"
 [connection signal="pressed" from="Play" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

@@ -25,6 +25,82 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Shoot" type="Button" parent="ColorRect"]
+margin_left = 8.0
+margin_top = 536.0
+margin_right = 120.0
+margin_bottom = 640.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Shoot"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_right = 256.0
+margin_bottom = 720.0
+color = Color( 0.470588, 0.462745, 0.462745, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Down" type="Button" parent="ColorRect2"]
+margin_left = 88.0
+margin_top = 632.0
+margin_right = 168.0
+margin_bottom = 704.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Down"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="Button" parent="ColorRect2"]
+margin_left = 176.0
+margin_top = 552.0
+margin_right = 256.0
+margin_bottom = 624.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Right"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Up" type="Button" parent="ColorRect2"]
+margin_left = 88.0
+margin_top = 472.0
+margin_right = 168.0
+margin_bottom = 544.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Up"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Button" parent="ColorRect2"]
+margin_top = 552.0
+margin_right = 80.0
+margin_bottom = 624.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Left"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_top = 704.0
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0.470588, 0.462745, 0.462745, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Level" type="Label" parent="."]
 margin_left = 1216.0
 margin_top = 40.0
@@ -89,10 +165,12 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 1152.0
-margin_top = 656.0
-margin_right = 1280.0
-margin_bottom = 720.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 248.0
+margin_bottom = 112.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Pause"
 __meta__ = {
 "_edit_use_anchors_": false

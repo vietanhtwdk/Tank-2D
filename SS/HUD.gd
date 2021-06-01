@@ -18,7 +18,7 @@ func _process(delta):
 	$Life.text = str(get_node("/root/Main").playerLife)
 	$EnemyLeft.text = str(get_node("/root/Main").enemyLeft)
 	$Score.text = str(get_node("/root/Main").score)
-	
+
 
 func _on_Button_pressed():
 	get_tree().paused = true

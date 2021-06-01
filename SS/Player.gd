@@ -14,29 +14,35 @@ var shield
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	health = 1
+	health = 2
 	damage = 1
 	screen_size = get_viewport_rect().size
 	MainGame = get_node("/root/Main")
+	for child in $Ray.get_children():
+		child.add_exception(self)
 
 func start(pos):
 	position = pos
 	show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func _process(delta):
 	var velocity = Vector2()  # The player's movement vector.
-	if Input.is_action_pressed("ui_right"):
+	
+		
+		
+	if Input.is_action_pressed("ui_right") or get_node("/root/Main/HUD/ColorRect2/Right").is_pressed():
 		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("ui_left") or get_node("/root/Main/HUD/ColorRect2/Left").is_pressed():
 		velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("ui_down") or get_node("/root/Main/HUD/ColorRect2/Down").is_pressed():
 		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("ui_up") or get_node("/root/Main/HUD/ColorRect2/Up").is_pressed():
 		velocity.y -= 1
+	if Input.is_action_pressed("shoot") or get_node("/root/Main/HUD/ColorRect/Shoot").is_pressed():
+		shoot()
+
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite.play()
@@ -46,22 +52,25 @@ func _process(delta):
 	if velocity.x > 0:
 		$AnimatedSprite.animation = "Default"
 		rotation_degrees = 90
+		$Ray.set_rotation(-rotation_degrees)
 	elif velocity.x < 0:
 		$AnimatedSprite.animation = "Default"
 		rotation_degrees = -90
+		$Ray.set_rotation(-rotation_degrees)
 	elif velocity.y > 0:
 		$AnimatedSprite.animation = "Default"
 		rotation_degrees = 180
+		$Ray.set_rotation(-rotation_degrees)
 	elif velocity.y < 0:
 		$AnimatedSprite.animation = "Default"
 		rotation_degrees = 0
-		
+		$Ray.set_rotation(-rotation_degrees)
+	
+	
+	
 	move_and_collide(velocity*delta)
-	
-	
-	if Input.is_action_pressed("shoot"):
-		shoot()
-		
+
+
 	if shield == 1:
 		$Shield.play()
 		$Shield.show()
@@ -71,7 +80,7 @@ func _physics_process(delta):
 		var collider = child.get_collider()
 		if collider!= null:
 			if collider.is_in_group("Enemies") && collider.froze==0:
-				collider.shoot()
+				collider.react(child.cast_to)
 
 func shoot():
 	if $ReloadTime.is_stopped() == true :

@@ -45,6 +45,7 @@ func _on_MainMenu_start_game():
 
 func load_level(var stage):
 	var levelScene = load("res://Level/Level"+ str(stage) +".tscn")
+	
 	if levelScene:
 		enemyLeft = 20
 #
@@ -70,20 +71,21 @@ func load_level(var stage):
 	else: game_clear()
 
 
+
 func spawn_player():
 	player = Player.instance()
 	currentLevel.add_child(player)
 	player.position = playerPosition
 
 func spawn_enemy():
-	var enemyType = rng.randi_range(0, 2)
+	var enemyType = rng.randi_range(0, 5)
 	var enemy
 	match enemyType:
-		0: 
+		0, 1, 2: 
 			enemy = Enemy.instance()
-		1: 
+		3, 4: 
 			enemy = Enemy2.instance()
-		2:
+		5:
 			enemy = Enemy3.instance()
 
 	currentLevel.add_child(enemy)
@@ -137,8 +139,9 @@ func _on_PowerUpSpawnTimer_timeout():
 	var powerType = rng.randi_range(0, 5)
 	var powerUp = PowerUp.instance()
 	powerUp.type = powerType
-	powerUp.position = Vector2(rng.randi_range(50, 1100), rng.randi_range(50, 660))
+	powerUp.position = Vector2(rng.randi_range(288, 1120), rng.randi_range(50, 660))
 	currentLevel.add_child(powerUp)
+
 
 
 func _on_FreezeTimer_timeout():
