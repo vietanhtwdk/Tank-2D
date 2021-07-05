@@ -4,7 +4,7 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export var speed = 300
+var speed
 var bullet = preload("res://SS/Bullet.tscn")
 var MainGame 
 var rng = RandomNumberGenerator.new()
@@ -13,19 +13,25 @@ var damage
 var health
 var froze
 var Player
+var scoreReward
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	speed = 300
 	move = 0
 	damage = 1
 	health = 1
 	froze = 0
+	scoreReward = 300
 	rng.randomize()
 	MainGame = get_node("/root/Main")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	custom_process(delta)
+
+func custom_process(delta):
 	if froze == 0:
 #		Player = get_node_or_null("/root/Main/Level/Player")
 #		if Player != null:
@@ -67,8 +73,6 @@ func _process(delta):
 		var collision = move_and_collide(velocity*delta)
 		if collision:
 			move = 0
-		
-
 
 func shoot():
 	if $ReloadTime.is_stopped() == true :
@@ -90,7 +94,9 @@ func hit(damageTaken):
 	health -= damageTaken
 	if health <= 0:
 		var oldScore = MainGame.score
-		MainGame.score += 300
+		
+		MainGame.score += scoreReward
+		
 		if(floor(float((MainGame.score/10000))) - floor(float((oldScore/10000)))==1):
 			MainGame.playerLife+=1
 		MainGame.enemyLeft -= 1
@@ -99,7 +105,6 @@ func hit(damageTaken):
 		queue_free()
 		
 func react(rayVector):
-	
 	var toPlayer = (rayVector*-1)
 	
 	if toPlayer.x > 0:
@@ -114,7 +119,6 @@ func react(rayVector):
 	elif toPlayer.y < 0:
 		$AnimatedSprite.animation = "Default"
 		rotation_degrees = 0
-	
 	shoot()
 	
 	

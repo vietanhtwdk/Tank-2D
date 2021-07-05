@@ -24,7 +24,7 @@ cell_size = Vector2( 32, 32 )
 collision_layer = 4
 collision_mask = 4
 format = 1
-tile_data = PoolIntArray( 655392, 1, 0, 655393, 1, 0, 720928, 1, 0, 720929, 1, 0 )
+tile_data = PoolIntArray( 655392, 4, 0, 655393, 4, 0, 720928, 4, 0, 720929, 4, 0 )
 
 [node name="Tree" type="TileMap" parent="."]
 z_index = 1

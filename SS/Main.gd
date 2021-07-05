@@ -73,9 +73,16 @@ func load_level(var stage):
 
 
 func spawn_player():
-	player = Player.instance()
-	currentLevel.add_child(player)
-	player.position = playerPosition
+	yield(get_tree().create_timer(1.5), "timeout")
+#	print_tree()
+	if get_node_or_null("/root/Main/Level/Player"):
+		pass
+	else:
+		if get_node_or_null("/root/Main/Level"):
+			player = Player.instance()
+			currentLevel.add_child(player)
+			player.position = playerPosition
+
 
 func spawn_enemy():
 	var enemyType = rng.randi_range(0, 5)
@@ -102,6 +109,7 @@ func level_clear():
 	$EnemySpawnTimer.stop()
 	$PowerUpSpawnTimer.stop()
 	currentLevel.queue_free()
+	yield(get_tree().create_timer(1.0), "timeout")
 	levelNum += 1
 	load_level(levelNum)
 	
@@ -160,3 +168,21 @@ func _on_ResultTimer_timeout():
 	resultScreen.get_node("Label").text = str("Level Reached: " 
 	+ str(levelNum) +  "\nScore: " + str(score))
 	add_child(resultScreen)
+
+
+#func _on_Button_pressed():
+#	print_tree()
+#
+#
+#func _on_Button2_pressed():
+#	get_node("/root/Main/Level/Player").hit(10)
+#	spawn_player()
+#	game_over()
+#	level_clear()
+#	var enemies = get_tree().get_nodes_in_group("Enemies")
+#	for enemy in enemies:
+#		enemy.hit(10)
+
+
+#func _on_Button2_pressed():
+#	enemyLeft=5

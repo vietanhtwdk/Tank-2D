@@ -9,7 +9,15 @@ extends CanvasLayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$PauseMenu.hide()
-	
+	if OS.get_name()=="Windows":
+		$ColorRect/Shoot.hide()
+		$ColorRect2/Down.hide()
+		$ColorRect2/Right.hide()
+		$ColorRect2/Up.hide()
+		$ColorRect2/Left.hide()
+
+
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
